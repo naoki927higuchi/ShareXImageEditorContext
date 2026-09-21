@@ -61,3 +61,9 @@ PowerShell でこのフォルダーを開き、次を実行します。
 
 開発中のZIPはローカル管理のみとし、公開時に選定したZIPだけをGitHubへ送ります。
 出力先・検証・公開準備の手順は [RELEASE-POLICY.md](RELEASE-POLICY.md) を参照してください。
+
+## GitHubから取得する配布ZIP
+
+- [ShareXImageEditorContext 1.0.1](distribution/ShareXImageEditorContext-1.0.1-x64.zip) / [SHA256](distribution/ShareXImageEditorContext-1.0.1-x64.zip.sha256)
+
+アクセス権のあるユーザーがZIPのファイル画面からダウンロードできます。ZIP全体を展開し、同梱説明書に従ってください。
