@@ -1,0 +1,4 @@
+LIBRARY ShareXCommand
+EXPORTS
+ DllGetClassObject PRIVATE
+ DllCanUnloadNow PRIVATE

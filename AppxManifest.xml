@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10" xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10" xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4" xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap uap10 com desktop4 desktop5 rescap">
+ <Identity Name="Local.ShareXImageEditorContext" Publisher="CN=ShareXImageEditorContext" Version="1.0.0.0" ProcessorArchitecture="x64" />
+ <Properties><DisplayName>ShareX Image Editor</DisplayName><PublisherDisplayName>Local</PublisherDisplayName><Logo>Assets\Logo.png</Logo></Properties>
+ <Dependencies><TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.22000.0" MaxVersionTested="10.0.26100.0" /></Dependencies>
+ <Resources><Resource Language="ja-jp" /></Resources>
+ <Applications><Application Id="App" Executable="ShareXImageEditorContext.exe" uap10:RuntimeBehavior="win32App" uap10:TrustLevel="mediumIL">
+  <uap:VisualElements DisplayName="ShareX Image Editor" Description="ShareX image editor context menu" BackgroundColor="transparent" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\Logo.png" />
+  <Extensions>
+   <com:Extension Category="windows.comServer"><com:ComServer><com:SurrogateServer DisplayName="ShareX Image Editor"><com:Class Id="68BB9D91-43AB-47CE-B772-868D30CD3215" Path="ShareXCommand.dll" ThreadingModel="STA" /></com:SurrogateServer></com:ComServer></com:Extension>
+   <desktop4:Extension Category="windows.fileExplorerContextMenus"><desktop4:FileExplorerContextMenus><desktop5:ItemType Type="*"><desktop5:Verb Id="ShareXImageEditor" Clsid="68BB9D91-43AB-47CE-B772-868D30CD3215" /></desktop5:ItemType></desktop4:FileExplorerContextMenus></desktop4:Extension>
+  </Extensions>
+ </Application></Applications>
+ <Capabilities><rescap:Capability Name="runFullTrust" /></Capabilities>
+</Package>
