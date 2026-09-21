@@ -67,3 +67,7 @@ PowerShell でこのフォルダーを開き、次を実行します。
 - [ShareXImageEditorContext 1.0.1](distribution/ShareXImageEditorContext-1.0.1-x64.zip) / [SHA256](distribution/ShareXImageEditorContext-1.0.1-x64.zip.sha256)
 
 アクセス権のあるユーザーがZIPのファイル画面からダウンロードできます。ZIP全体を展開し、同梱説明書に従ってください。
+
+## ソースと配布物の公開
+
+[最新バイナリー](distribution/README.md)からWindows版ZIPをダウンロードできます。ソース一式はこのリポジトリで公開しています。共同開発、Issues、Pull requestsは受け付けていません。
