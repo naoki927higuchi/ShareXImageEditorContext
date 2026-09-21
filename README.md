@@ -56,3 +56,8 @@ PowerShell でこのフォルダーを開き、次を実行します。
 ```
 
 登録先は HKCU のため管理者権限は不要です。Windows 11 のビルドによっては自作の shell verb が新メニューではなく「その他のオプション」に表示されます。その場合、モダンメニューへの確実な統合には MSIX のパッケージ ID と `IExplorerCommand` の packaged COM 登録が必要です。
+
+## 配布ZIPの公開運用
+
+開発中のZIPはローカル管理のみとし、公開時に選定したZIPだけをGitHubへ送ります。
+出力先・検証・公開準備の手順は [RELEASE-POLICY.md](RELEASE-POLICY.md) を参照してください。

@@ -1,4 +1,5 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
+if (Test-Path (Join-Path $PSScriptRoot 'release\ShareXImageEditorContext-1.0.1-x64.zip')) { throw 'Local ZIP already exists; preserve it or select a new version before rebuilding.' }
 $sdk = 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64'
 $payload = New-Item -ItemType Directory -Path (Join-Path $PSScriptRoot ('release-payload-' + [guid]::NewGuid().ToString('N'))) 
 $out = New-Item -ItemType Directory -Path (Join-Path $PSScriptRoot 'release\ShareXImageEditorContext-1.0.1-x64') -Force
@@ -23,7 +24,7 @@ Export-Certificate -Cert $cert -FilePath $cer -Force | Out-Null
 if ($LASTEXITCODE) { throw 'Signing failed.' }
 $signature = Get-AuthenticodeSignature -FilePath $package
 if ($signature.SignerCertificate.Thumbprint -ne $cert.Thumbprint -or $signature.Status -eq 'HashMismatch' -or $signature.Status -eq 'NotSigned') { throw 'Signature verification failed.' }
-Copy-Item -Path (Join-Path $PSScriptRoot 'distribution\*') -Destination $out.FullName -Force
+Get-ChildItem -LiteralPath (Join-Path $PSScriptRoot 'distribution') -File | Where-Object { $_.Extension -in '.ps1','.cmd','.txt' } | Copy-Item -Destination $out.FullName -Force
 [ordered]@{
  Version = '1.0.1.0'
  Architecture = 'x64'
@@ -34,4 +35,6 @@ Copy-Item -Path (Join-Path $PSScriptRoot 'distribution\*') -Destination $out.Ful
 } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $out.FullName 'package-info.json') -Encoding UTF8
 $zip = Join-Path $PSScriptRoot 'release\ShareXImageEditorContext-1.0.1-x64.zip'
 Compress-Archive -Path $out.FullName -DestinationPath $zip -Force
+$zipHash = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+"$zipHash  $([IO.Path]::GetFileName($zip))" | Set-Content -LiteralPath "$zip.sha256" -Encoding ascii
 Get-Item -LiteralPath $zip | Select-Object FullName,Length
